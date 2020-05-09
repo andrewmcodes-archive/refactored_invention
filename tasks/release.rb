@@ -4,7 +4,6 @@ version = File.read("#{root}/VERSION").strip
 tag     = "v#{version}"
 
 # Create new folder called pkg
-binding.pry
 Dir.mkdir "pkg"
 
 # This "npm-ifies" the current version number
