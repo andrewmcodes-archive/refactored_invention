@@ -4,7 +4,7 @@ require_relative "lib/refactored_invention/version"
 
 Gem::Specification.new do |s|
   s.name = "refactored_invention"
-  s.version = RefactoredInvention::VERSION
+  s.version = RefactoredInvention.version
   s.authors = ["Andrew Mason"]
   s.email = ["andrewmcodes@protonmail.com"]
   s.homepage = "http://github.com/andrewmcodes/refactored_invention"

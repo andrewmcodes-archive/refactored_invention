@@ -3,7 +3,13 @@
 
 # Refactored Invention
 
-TBD
+- Utilizes yarn workspaces
+  - This means you do not have to `cd` into folders for development
+  - All development related packages are stored in the root of the project in package.json
+  - Example usage:
+    - From root `yarn prettier-standard:format` will correctly format files
+    - To use scripts specific to the JS workspace `yarn workspaces run ...` ex: `yarn workspaces run build` will output the rollup generated dist file
+
 
 ## Installation
 

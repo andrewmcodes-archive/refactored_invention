@@ -1,0 +1,23 @@
+{
+  "name": "refactored_invention",
+  "version": "1.0.0-delta",
+  "description": "wip",
+  "homepage": "https://github.com/andrewmcodes/refactored_invention#readme",
+  "bugs": {
+    "url": "https://github.com/andrewmcodes/refactored_invention/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewmcodes/refactored_invention.git"
+  },
+  "license": "MIT",
+  "author": "Andrew Mason",
+  "main": "dist/refactored_invention.min.js",
+  "files": [
+    "src/*.js"
+  ],
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
