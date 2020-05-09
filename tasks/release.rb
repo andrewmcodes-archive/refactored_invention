@@ -21,10 +21,6 @@ gem     = "pkg/refactored_invention-#{version}.gem"
 gemspec = "refactored_invention.gemspec"
 
 namespace :all do
-  task :clean do
-    rm_f gem
-  end
-
   task build: [:clean, gem]
 
   task :update_versions do
@@ -64,13 +60,6 @@ namespace :all do
     end
   end
 
-  task gem => %w(update_versions pkg) do
-    puts "gem task?"
-    cmd = ""
-    cmd += "gem build #{gemspec} && mv refactored_invention-#{version}.gem #{root}/pkg/"
-    sh cmd
-  end
-
   # Push gem to Ruby Gems and node package to NPM
   task :push do
     puts "push gem"
@@ -83,6 +72,13 @@ namespace :all do
       sh "npm publish --tag #{npm_tag}"
     end
     # end
+  end
+
+  task gem => %w(update_versions pkg) do
+    puts "gem task?"
+    cmd = ""
+    cmd += "gem build #{gemspec} && mv refactored_invention-#{version}.gem #{root}/pkg/"
+    sh cmd
   end
 
   # Verify we have no dirty changes in the tree and that the tag does not already exist
@@ -98,6 +94,10 @@ namespace :all do
       abort "[ABORTING] `git tag` shows that #{tag} already exists. Has this version already\n"\
             "           been released? Git tagging can be skipped by setting SKIP_TAG=1"
     end
+  end
+
+  task :clean do
+    rm_f gem
   end
 
   # Verifies if dependencies are satisfied by installed gems
