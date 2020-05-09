@@ -65,6 +65,7 @@ namespace :all do
   end
 
   task gem => %w(update_versions pkg) do
+    puts "gem task?"
     cmd = ""
     cmd += "gem build #{gemspec} && mv refactored_invention-#{version}.gem #{root}/pkg/"
     sh cmd
@@ -72,8 +73,10 @@ namespace :all do
 
   # Push gem to Ruby Gems and node package to NPM
   task :push do
+    puts "push gem"
     sh "gem push #{gem}"
 
+    puts "push js"
     # if File.exist?("refactored_invention/package.json")
     Dir.chdir("javascript") do
       npm_tag = /[a-z]/.match?(version) ? "pre" : "latest"
@@ -84,6 +87,7 @@ namespace :all do
 
   # Verify we have no dirty changes in the tree and that the tag does not already exist
   task :ensure_clean_state do
+    puts "ensuring clean state"
     # Checks to see if the tree is dirty and aborts if it is
     unless `git status -s | grep -v 'VERSION\\|CHANGELOG\\|Gemfile.lock\\|package.json\\|version.rb\\|tasks/release.rb'`.strip.empty?
       abort "[ABORTING] `git status` reports a dirty tree. Make sure all changes are committed"
