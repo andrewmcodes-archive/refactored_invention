@@ -21,11 +21,11 @@ gem     = "pkg/refactored_invention-#{version}.gem"
 gemspec = "refactored_invention.gemspec"
 
 namespace :all do
-  task build: [:clean, gem]
-
   task :clean do
     rm_f gem
   end
+
+  task build: [:clean, gem]
 
   task :update_versions do
     glob = root.dup
@@ -75,7 +75,7 @@ namespace :all do
     sh "gem push #{gem}"
 
     # if File.exist?("refactored_invention/package.json")
-    Dir.chdir("refactored_invention") do
+    Dir.chdir("javascript") do
       npm_tag = /[a-z]/.match?(version) ? "pre" : "latest"
       sh "npm publish --tag #{npm_tag}"
     end
